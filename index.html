@@ -230,20 +230,29 @@
   /* ── PROJECTS ── */
   #projects .projects-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
   .project-card {
     padding: 2.5rem 3rem;
-    border-right: var(--border);
     border-bottom: var(--border);
-    cursor: pointer;
+    cursor: default;
     transition: background 0.18s;
     position: relative;
     overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 3rem;
+    align-items: start;
   }
 
-  .project-card:nth-child(even) { border-right: none; }
+  .project-card-info { grid-column: 1; }
+
+  .project-card-media {
+    grid-column: 2;
+    grid-row: 1 / 7;
+    align-self: center;
+  }
 
   .project-card::before {
     content: '';
@@ -502,13 +511,14 @@
 
   /* ── MOBILE ── */
   @media (max-width: 768px) {
-    #hero, #projects .projects-grid, #about, #contact {
+    #hero, #about, #contact {
       grid-template-columns: 1fr;
     }
     .hero-left { border-right: none; border-bottom: var(--border); padding: 3rem 1.5rem; }
     .hero-right { padding: 3rem 1.5rem; }
     h1 { font-size: 5rem; }
-    .project-card { border-right: none; }
+    .project-card { grid-template-columns: 1fr; }
+    .project-card-media { grid-column: 1; grid-row: auto; margin-top: 1.5rem; }
     .about-left { border-right: none; border-bottom: var(--border); }
     .experience-item { grid-template-columns: 1fr; gap: 0.5rem; }
     .section-header, .project-card, .about-left, .about-right, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
@@ -587,51 +597,65 @@
   <div class="projects-grid">
 
     <div class="project-card fade-in">
-      <p class="project-index">001</p>
-      <h3 class="project-title">Bubbles of Interpersonal Interaction</h3>
-      <p class="project-subtitle">Proximity-Based Sonification Installation</p>
-      <p class="project-desc">
-        Real-time installation mapping interpersonal distance to harmonic consonance and movement speed to FM synthesis timbre. Integrates YOLOv8 body-tracking via OSC/UDP into a Max/MSP spatial audio processing chain.
-      </p>
-      <p class="project-desc" style="font-size:0.78rem; color:#888;">
-        ★ Selected for exhibition at Tekniska museet, NAVET Student Festival 2026
-      </p>
-      <div class="project-tags">
-        <span class="tag highlight">Max/MSP</span>
-        <span class="tag">YOLOv8</span>
-        <span class="tag">OSC/UDP</span>
-        <span class="tag">FM Synthesis</span>
-        <span class="tag">Python</span>
+      <div class="project-card-info">
+        <p class="project-index">001</p>
+        <h3 class="project-title">Bubbles of Interpersonal Interaction</h3>
+        <p class="project-subtitle">Proximity-Based Sonification Installation</p>
+        <p class="project-desc">
+          Real-time installation mapping interpersonal distance to harmonic consonance and movement speed to FM synthesis timbre. Integrates YOLOv8 body-tracking via OSC/UDP into a Max/MSP spatial audio processing chain.
+        </p>
+        <p class="project-desc" style="font-size:0.78rem; color:#888;">
+          ★ Selected for exhibition at Tekniska museet, NAVET Student Festival 2026
+        </p>
+        <div class="project-tags">
+          <span class="tag highlight">Max/MSP</span>
+          <span class="tag">YOLOv8</span>
+          <span class="tag">OSC/UDP</span>
+          <span class="tag">FM Synthesis</span>
+          <span class="tag">Python</span>
+        </div>
+      </div>
+      <div class="project-card-media">
+        <div style="position:relative;width:100%;aspect-ratio:16/9;">
+          <iframe src="https://www.youtube.com/embed/B9SXV5q4DfM"
+            style="position:absolute;inset:0;width:100%;height:100%;border:1px solid #0d0d0d;"
+            allowfullscreen loading="lazy">
+          </iframe>
+        </div>
       </div>
     </div>
 
     <div class="project-card fade-in">
-      <p class="project-index">002</p>
-      <h3 class="project-title">Entropy Piano</h3>
-      <p class="project-subtitle">Generative Instrument in Pure Data</p>
-      <p class="project-desc">
-        A generative instrument where accumulated keystroke frequency destabilises sonic output over time. One-to-many input mapping translates keystroke frequency into randomised pitch deviation and FM synthesis timbre modulation, creating emergent performer-instrument interaction.
-      </p>
-      <div class="project-tags">
-        <span class="tag highlight">Pure Data</span>
-        <span class="tag">FM Synthesis</span>
-        <span class="tag">Generative</span>
-        <span class="tag">HCI</span>
+      <div class="project-card-info">
+        <p class="project-index">002</p>
+        <h3 class="project-title">Entropy Piano</h3>
+        <p class="project-subtitle">Generative Instrument in Pure Data</p>
+        <p class="project-desc">
+          A generative instrument where accumulated keystroke frequency destabilises sonic output over time. One-to-many input mapping translates keystroke frequency into randomised pitch deviation and FM synthesis timbre modulation, creating emergent performer-instrument interaction.
+        </p>
+        <div class="project-tags">
+          <span class="tag highlight">Pure Data</span>
+          <span class="tag">FM Synthesis</span>
+          <span class="tag">Generative</span>
+          <span class="tag">HCI</span>
+        </div>
       </div>
     </div>
 
     <div class="project-card fade-in">
-      <p class="project-index">003</p>
-      <h3 class="project-title">Color-to-Sound Mapping</h3>
-      <p class="project-subtitle">Real-time Chromatic Sonification in Python</p>
-      <p class="project-desc">
-        Perceptual mapping between colors and sonic parameters grounded in cross-modal color-sound association research. Real-time camera-based color detection with area-proportional volume scaling and adaptive threshold for environmental variation.
-      </p>
-      <div class="project-tags">
-        <span class="tag highlight">Python</span>
-        <span class="tag">OpenCV</span>
-        <span class="tag">Sonification</span>
-        <span class="tag">Cross-modal</span>
+      <div class="project-card-info">
+        <p class="project-index">003</p>
+        <h3 class="project-title">Color-to-Sound Mapping</h3>
+        <p class="project-subtitle">Real-time Chromatic Sonification in Python</p>
+        <p class="project-desc">
+          Perceptual mapping between colors and sonic parameters grounded in cross-modal color-sound association research. Real-time camera-based color detection with area-proportional volume scaling and adaptive threshold for environmental variation.
+        </p>
+        <div class="project-tags">
+          <span class="tag highlight">Python</span>
+          <span class="tag">OpenCV</span>
+          <span class="tag">Sonification</span>
+          <span class="tag">Cross-modal</span>
+        </div>
       </div>
     </div>
 
