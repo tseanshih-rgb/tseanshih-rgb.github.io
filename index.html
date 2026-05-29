@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tse-An Shih — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0d0d0d;
+    --white: #ffffff;
+    --yellow: #E8C84A;
+    --blue: #2B4C8C;
+    --blue-light: #e8eef7;
+    --gray: #8a8880;
+    --border: 1.5px solid var(--black);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── GRID LINES (decorative) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(0,0,0,0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0,0,0,0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 56px;
+    background: var(--white);
+    border-bottom: var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.25rem;
+    letter-spacing: 0.1em;
+    color: var(--black);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--black);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--blue); }
+
+  /* ── HERO ── */
+  #hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: var(--border);
+    margin-top: 56px;
+  }
+
+  .hero-left {
+    padding: 5rem 3rem 4rem;
+    border-right: var(--border);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 2rem;
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(5rem, 10vw, 9rem);
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    color: var(--black);
+  }
+
+  h1 span {
+    color: var(--yellow);
+  }
+
+  .hero-bio {
+    margin-top: 3rem;
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 36ch;
+    font-weight: 300;
+    color: var(--black);
+  }
+
+  .hero-links {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.55rem 1.3rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: var(--border);
+    color: var(--black);
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+  }
+
+  .btn:hover { background: var(--black); color: var(--white); }
+  .btn.primary { background: var(--blue); color: var(--white); border-color: var(--blue); }
+  .btn.primary:hover { background: #1e3666; border-color: #1e3666; }
+
+  .hero-right {
+    padding: 5rem 3rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+  }
+
+  /* Bauhaus geometric decoration */
+  .bauhaus-shape {
+    position: absolute;
+    top: 4rem;
+    right: 3rem;
+  }
+
+  .bauhaus-shape svg { display: block; }
+
+  .hero-meta {
+    margin-top: auto;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 0.5px solid rgba(0,0,0,0.15);
+  }
+
+  .meta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray);
+    width: 80px;
+    flex-shrink: 0;
+  }
+
+  .meta-value {
+    font-size: 0.9rem;
+    color: var(--black);
+  }
+
+  /* ── SECTION COMMON ── */
+  section { position: relative; z-index: 1; }
+
+  .section-header {
+    padding: 2.5rem 3rem 1.5rem;
+    border-bottom: var(--border);
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
+  }
+
+  .section-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--gray);
+    letter-spacing: 0.1em;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+
+  /* ── PROJECTS ── */
+  #projects .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .project-card {
+    padding: 2.5rem 3rem;
+    border-right: var(--border);
+    border-bottom: var(--border);
+    cursor: pointer;
+    transition: background 0.18s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card:nth-child(even) { border-right: none; }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--yellow);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.25s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .project-card:hover::before { transform: scaleY(1); }
+  .project-card:hover { background: rgba(232,200,74,0.04); }
+
+  .project-index {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: var(--gray);
+    margin-bottom: 1rem;
+  }
+
+  .project-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.03em;
+    line-height: 1.1;
+    margin-bottom: 0.6rem;
+    color: var(--black);
+  }
+
+  .project-subtitle {
+    font-size: 0.78rem;
+    color: var(--blue);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+
+  .project-desc {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: #444;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border: 0.5px solid var(--black);
+    color: var(--black);
+  }
+
+  .tag.highlight { background: var(--yellow); border-color: var(--yellow); color: var(--black); }
+  .tag.highlight-blue { background: var(--blue); border-color: var(--blue); color: #fff; }
+
+  /* ── ABOUT ── */
+  #about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: var(--border);
+  }
+
+  .about-left {
+    padding: 3rem;
+    border-right: var(--border);
+  }
+
+  .about-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    font-weight: 300;
+    max-width: 44ch;
+  }
+
+  .about-text strong {
+    font-weight: 500;
+    color: var(--blue);
+  }
+
+  .about-right {
+    padding: 3rem;
+  }
+
+  .skills-group { margin-bottom: 2rem; }
+
+  .skills-group-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.5px solid rgba(0,0,0,0.15);
+  }
+
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience {
+    border-bottom: var(--border);
+  }
+
+  .experience-item {
+    padding: 2.5rem 3rem;
+    border-bottom: var(--border);
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+  }
+
+  .experience-item:last-child { border-bottom: none; }
+
+  .exp-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--gray);
+    padding-top: 0.2rem;
+  }
+
+  .exp-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.03em;
+    margin-bottom: 0.25rem;
+  }
+
+  .exp-org {
+    font-size: 0.8rem;
+    color: var(--gray);
+    margin-bottom: 0.75rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+  }
+
+  .exp-desc {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: #444;
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    padding: 5rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .contact-heading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 6vw, 6rem);
+    line-height: 0.95;
+    color: var(--black);
+  }
+
+  .contact-heading span { color: var(--yellow); }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 0.75rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: var(--black);
+    padding: 0.75rem 0;
+    border-bottom: 0.5px solid rgba(0,0,0,0.15);
+    font-size: 0.9rem;
+    transition: color 0.18s;
+  }
+
+  .contact-link:hover { color: var(--blue); }
+
+  .contact-link-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray);
+    width: 60px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    padding: 1.5rem 3rem;
+    border-top: var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--gray);
+    text-transform: uppercase;
+  }
+
+  .footer-mark {
+    width: 28px;
+    height: 28px;
+    background: var(--yellow);
+    display: block;
+  }
+
+  /* ── BAUHAUS STRIPE ── */
+  .stripe-bar {
+    display: flex;
+    height: 6px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stripe-bar span {
+    flex: 1;
+    display: block;
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    #hero, #projects .projects-grid, #about, #contact {
+      grid-template-columns: 1fr;
+    }
+    .hero-left { border-right: none; border-bottom: var(--border); padding: 3rem 1.5rem; }
+    .hero-right { padding: 3rem 1.5rem; }
+    h1 { font-size: 5rem; }
+    .project-card { border-right: none; }
+    .about-left { border-right: none; border-bottom: var(--border); }
+    .experience-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .section-header, .project-card, .about-left, .about-right, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+    #contact { padding: 3rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">TSE-AN SHIH</a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- STRIPE -->
+<div class="stripe-bar">
+  <span style="background:#E8C84A;flex:3"></span>
+  <span style="background:#0d0d0d;flex:1"></span>
+  <span style="background:#2B4C8C;flex:2"></span>
+  <span style="background:#0d0d0d;flex:4"></span>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div>
+      <p class="hero-tag">Interactive Media · Sound · Research</p>
+      <h1>TSE-<br><span>AN</span><br>SHIH</h1>
+      <p class="hero-bio">
+        Interdisciplinary researcher and designer bridging audio programming with cognitive psychology. Building systems where <em>sound becomes interface</em>.
+      </p>
+      <div class="hero-links">
+        <a class="btn primary" href="#projects">View Projects</a>
+        <a class="btn" href="mailto:tseanshih@gmail.com">Get in Touch</a>
+        <a class="btn" href="https://github.com/tseanshih-rgb" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="meta-label">Based in</span>
+        <span class="meta-value">Stockholm, SE</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Program</span>
+        <span class="meta-value">MSc Interactive Media Technology, KTH</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Focus</span>
+        <span class="meta-value">Sonification · HCI · Audio Programming</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Status</span>
+        <span class="meta-value" style="color:var(--blue); font-weight:500;">Available for collaboration</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <span class="section-number">01 —</span>
+    <h2 class="section-title">Projects</h2>
+  </div>
+
+  <div class="projects-grid">
+
+    <div class="project-card fade-in">
+      <p class="project-index">001</p>
+      <h3 class="project-title">Bubbles of Interpersonal Interaction</h3>
+      <p class="project-subtitle">Proximity-Based Sonification Installation</p>
+      <p class="project-desc">
+        Real-time installation mapping interpersonal distance to harmonic consonance and movement speed to FM synthesis timbre. Integrates YOLOv8 body-tracking via OSC/UDP into a Max/MSP spatial audio processing chain.
+      </p>
+      <p class="project-desc" style="font-size:0.78rem; color:#888;">
+        ★ Selected for exhibition at Tekniska museet, NAVET Student Festival 2026
+      </p>
+      <div class="project-tags">
+        <span class="tag highlight">Max/MSP</span>
+        <span class="tag">YOLOv8</span>
+        <span class="tag">OSC/UDP</span>
+        <span class="tag">FM Synthesis</span>
+        <span class="tag">Python</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <p class="project-index">002</p>
+      <h3 class="project-title">Entropy Piano</h3>
+      <p class="project-subtitle">Generative Instrument in Pure Data</p>
+      <p class="project-desc">
+        A generative instrument where accumulated keystroke frequency destabilises sonic output over time. One-to-many input mapping translates keystroke frequency into randomised pitch deviation and FM synthesis timbre modulation, creating emergent performer-instrument interaction.
+      </p>
+      <div class="project-tags">
+        <span class="tag highlight">Pure Data</span>
+        <span class="tag">FM Synthesis</span>
+        <span class="tag">Generative</span>
+        <span class="tag">HCI</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <p class="project-index">003</p>
+      <h3 class="project-title">Color-to-Sound Mapping</h3>
+      <p class="project-subtitle">Real-time Chromatic Sonification in Python</p>
+      <p class="project-desc">
+        Perceptual mapping between colors and sonic parameters grounded in cross-modal color-sound association research. Real-time camera-based color detection with area-proportional volume scaling and adaptive threshold for environmental variation.
+      </p>
+      <div class="project-tags">
+        <span class="tag highlight">Python</span>
+        <span class="tag">OpenCV</span>
+        <span class="tag">Sonification</span>
+        <span class="tag">Cross-modal</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header" style="grid-column: 1 / -1; border-bottom: var(--border);">
+    <span class="section-number">02 —</span>
+    <h2 class="section-title">About</h2>
+  </div>
+  <div class="about-left fade-in">
+    <p class="about-text">
+      I work at the intersection of <strong>audio programming</strong>, <strong>interactive systems</strong>, and <strong>cognitive psychology</strong>. My practice centers on designing experiences where sound is not decoration but interface — a medium through which human perception, space, and behavior become legible.
+      <br><br>
+      Currently pursuing an MSc in Interactive Media Technology at KTH Royal Institute of Technology, Stockholm. Previously spent two years as a Senior Research Executive at Ipsos, designing and executing 50+ research projects across Asia.
+    </p>
+  </div>
+  <div class="about-right fade-in">
+    <div class="skills-group">
+      <p class="skills-group-label">Audio / Music Technology</p>
+      <div class="skills-list">
+        <span class="tag">Max/MSP</span>
+        <span class="tag">Pure Data</span>
+        <span class="tag">FM Synthesis</span>
+        <span class="tag">OSC/UDP</span>
+      </div>
+    </div>
+    <div class="skills-group">
+      <p class="skills-group-label">Programming</p>
+      <div class="skills-list">
+        <span class="tag">Python</span>
+        <span class="tag">C# (Unity)</span>
+        <span class="tag">Java (Processing)</span>
+        <span class="tag">MATLAB</span>
+      </div>
+    </div>
+    <div class="skills-group">
+      <p class="skills-group-label">Design & Research</p>
+      <div class="skills-list">
+        <span class="tag">Figma</span>
+        <span class="tag">User Research</span>
+        <span class="tag">Experimental Design</span>
+        <span class="tag">Usability Evaluation</span>
+        <span class="tag">Statistical Analysis</span>
+      </div>
+    </div>
+    <div class="skills-group">
+      <p class="skills-group-label">Education</p>
+      <div class="skills-list">
+        <span class="tag highlight-blue">KTH — MSc IMT</span>
+        <span class="tag">BNU — BSc Psychology</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header">
+    <span class="section-number">03 —</span>
+    <h2 class="section-title">Experience</h2>
+  </div>
+
+  <div class="experience-item fade-in">
+    <div class="exp-date">Aug 2025 — Present</div>
+    <div>
+      <p class="exp-title">MSc Interactive Media Technology</p>
+      <p class="exp-org">KTH Royal Institute of Technology · Stockholm, SE</p>
+      <p class="exp-desc">Sound in Interaction · Musical Communication & Music Technology · Human Perception for Information Technology · Programming for Data Science · Computer Graphics & Interaction</p>
+    </div>
+  </div>
+
+  <div class="experience-item fade-in">
+    <div class="exp-date">Jul 2022 — Aug 2024</div>
+    <div>
+      <p class="exp-title">Senior Research Executive</p>
+      <p class="exp-org">Ipsos LTD. · Beijing, CN</p>
+      <p class="exp-desc">Designed and executed 50+ research projects. Applied statistical analysis and interview protocols across client deliverables spanning consumer insights, UX evaluation, and strategic advisory.</p>
+    </div>
+  </div>
+
+  <div class="experience-item fade-in">
+    <div class="exp-date">Aug 2018 — Jun 2022</div>
+    <div>
+      <p class="exp-title">BSc Psychology — GPA 3.5/4</p>
+      <p class="exp-org">Beijing Normal University · Beijing, CN</p>
+      <p class="exp-desc">Cognitive Psychology · Engineering Psychology · Experimental Psychology · Multi-Factor Experimental Design</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="border-bottom: var(--border);">
+  <div>
+    <h2 class="contact-heading">LET'S<br><span>WORK</span><br>TOGETHER.</h2>
+  </div>
+  <div class="contact-links">
+    <a class="contact-link" href="mailto:tseanshih@gmail.com">
+      <span class="contact-link-label">Email</span>
+      tseanshih@gmail.com
+    </a>
+    <a class="contact-link" href="https://github.com/tseanshih-rgb" target="_blank">
+      <span class="contact-link-label">GitHub</span>
+      tseanshih-rgb
+    </a>
+    <a class="contact-link" href="#">
+      <span class="contact-link-label">Location</span>
+      Stockholm, Sweden
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Tse-An Shih — All rights reserved</p>
+  <span class="footer-mark"></span>
+  <p>Interactive Media Technology · KTH</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
