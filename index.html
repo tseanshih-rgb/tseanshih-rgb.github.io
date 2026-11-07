@@ -309,6 +309,29 @@
     border: none;
   }
 
+  /* ── RESEARCH ── */
+  .research-block { margin-bottom: 0.75rem; }
+  .research-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin-bottom: 0.2rem;
+  }
+  .project-card-media img.figure {
+    aspect-ratio: auto;
+    object-fit: contain;
+    background: #fff;
+    padding: 0.5rem;
+  }
+  .media-caption {
+    font-size: 0.75rem;
+    color: var(--ink-faint);
+    line-height: 1.5;
+    margin: 0.6rem 0 1rem;
+  }
+
   /* ── ABOUT ── */
   #about .about-body {
     display: grid;
@@ -496,6 +519,7 @@
   <a class="nav-logo" href="#">Tse-An Shih</a>
   <ul class="nav-links">
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#research">Research</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -547,12 +571,12 @@
     <div class="project-card fade-in">
       <div class="project-card-info">
         <p class="project-index">001</p>
-        <h3 class="project-title">Bubbles of Interpersonal Interaction</h3>
+        <h3 class="project-title">Where We Meet in Resonance</h3>
         <p class="project-subtitle">Proximity-Based Sonification Installation</p>
         <p class="project-desc">
           Real-time installation mapping interpersonal distance to harmonic consonance and movement speed to FM synthesis timbre. Integrates YOLOv8 body-tracking via OSC/UDP into a Max/MSP spatial audio processing chain.
         </p>
-        <p class="project-note">★ Selected for exhibition at Tekniska museet, NAVET Student Festival 2026</p>
+        <p class="project-note">★ Exhibited at Tekniska museet, NAVET, October 2026</p>
         <div class="project-tags">
           <span class="tag amber">Max/MSP</span>
           <span class="tag">YOLOv8</span>
@@ -560,7 +584,7 @@
           <span class="tag">FM Synthesis</span>
           <span class="tag">Python</span>
         </div>
-        <a href="https://github.com/tseanshih-rgb/Bubbles-of-Interpersonal-Interaction" target="_blank" class="btn">GitHub →</a>
+        <a href="https://github.com/tseanshih-rgb/Where-We-Meet-in-Resonance" target="_blank" class="btn">GitHub →</a>
       </div>
       <div class="project-card-media">
         <div class="video-wrapper">
@@ -619,7 +643,7 @@
         <p class="project-desc">
           A hi-fi Figma prototype designed around the theme of rituals for new graduates entering the workforce. Users write down daily achievements and fold them — digitally or physically — into paper boats, releasing them into the water as a reflective ritual.
         </p>
-        <p class="project-note">Team project with Kimmy Karlsson Kochar, Sandra Kåhre & Yakun Zhang · 8 user interviews → affinity mapping → POV/HMW → parallel prototyping → hi-fi prototype → cooperative evaluation</p>
+        <p class="project-note">Team project with Kimmy Karlsson Kochar, Sandra Kåhre & Yakun Zhang · 8 user interviews → affinity mapping → POV/HMW → parallel prototyping → hi-fi prototype → cooperative evaluation. Evaluation and task-based cognitive walkthroughs led to a new search feature and improved iconography for learnability.</p>
         <div class="project-tags">
           <span class="tag slate">Figma</span>
           <span class="tag">UX Research</span>
@@ -636,18 +660,69 @@
   </div>
 </section>
 
+<!-- RESEARCH -->
+<section id="research">
+  <div class="wrap">
+    <div class="section-intro fade-in">
+      <p class="section-label">02 — Research</p>
+      <h2>Research</h2>
+    </div>
+
+    <div class="project-card fade-in">
+      <div class="project-card-info">
+        <p class="project-index">R01</p>
+        <h3 class="project-title">The Impact of Vocal Music in Public Sound Environments</h3>
+        <p class="project-subtitle">Within-subject experiment · KTH DM2350 · 2025 · Group project</p>
+        <div class="research-block">
+          <p class="research-label">Question</p>
+          <p class="project-desc">How do different vocal styles in background music affect anxiety and cognitive performance in a public space?</p>
+        </div>
+        <div class="research-block">
+          <p class="research-label">Method</p>
+          <p class="project-desc">A within-subject experiment (N = 14) in a lab-simulated convenience store, with condition order counterbalanced. Adults aged 21–31 completed a digit span task and a symbol search task while hearing music with soft or rough vocals, generated to keep tempo and volume constant and mixed with realistic store recordings.</p>
+        </div>
+        <div class="research-block">
+          <p class="research-label">Measures</p>
+          <p class="project-desc">STAI before and after the session, NASA-TLX after each task, task scores, and a closing interview.</p>
+        </div>
+        <div class="research-block">
+          <p class="research-label">Findings</p>
+          <p class="project-desc">Anxiety rose significantly from before to after the session (M = 35.8 → 41.1; linear mixed model, F(1, 33.93) = 23.94, p &lt; .001). Task performance did not differ significantly between vocal types. In interviews, participants described rough vocals as more noticeable and reported more frustration with them.</p>
+        </div>
+        <div class="research-block">
+          <p class="research-label">Takeaway</p>
+          <p class="project-desc">The effect of vocal type appeared to depend on the task. Rough vocals may be more intrusive, even without a measurable cost to performance.</p>
+        </div>
+        <p class="project-note">Team project with Bente de Bruin, Carl Isaksson, Marie Schön &amp; Liyun Sun · My role: experimental design, data collection and statistical analysis</p>
+        <div class="project-tags">
+          <span class="tag slate">Within-subject Design</span>
+          <span class="tag">Linear Mixed Models</span>
+          <span class="tag">STAI</span>
+          <span class="tag">NASA-TLX</span>
+          <span class="tag">Interviews</span>
+        </div>
+        <a href="files/Poster_KF1-A.pdf" target="_blank" class="btn">View Poster (PDF) →</a>
+      </div>
+      <div class="project-card-media">
+        <img class="figure" src="images/vocal-music-results.png" alt="Box plots of symbol search and digit span scores for soft and rough vocal conditions, showing similar medians and wider spread for rough vocals">
+        <p class="media-caption">Task scores by vocal type: symbol search (top) and digit span (bottom). Medians are similar; scores vary more under rough vocals.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ABOUT -->
 <section id="about">
   <div class="wrap">
     <div class="section-intro fade-in">
-      <p class="section-label">02 — About</p>
+      <p class="section-label">03 — About</p>
       <h2>Background</h2>
     </div>
     <div class="about-body">
       <div class="about-text fade-in">
         I work at the intersection of <strong>audio programming</strong>, <strong>interactive systems</strong>, and <strong>cognitive psychology</strong>. My practice centers on designing experiences where sound is not decoration but interface — a medium through which human perception, space, and behavior become legible.
         <br><br>
-        Currently pursuing an MSc in Interactive Media Technology at KTH Royal Institute of Technology, Stockholm. Previously spent two years as a Senior Research Executive at Ipsos, designing and executing 50+ research projects across Asia.
+        Currently pursuing an MSc in Interactive Media Technology at KTH Royal Institute of Technology, Stockholm. Previously spent two years as a Senior Research Executive at Ipsos, leading 60+ qualitative and quantitative research projects end to end, across consumer and social sectors.
       </div>
       <div class="fade-in">
         <div class="skills-group">
@@ -676,6 +751,9 @@
             <span class="tag">Experimental Design</span>
             <span class="tag">Usability Evaluation</span>
             <span class="tag">Statistical Analysis</span>
+            <span class="tag">Mixed-effects Models</span>
+            <span class="tag">SPSS</span>
+            <span class="tag">Adobe Illustrator</span>
           </div>
         </div>
         <div class="skills-group">
@@ -694,7 +772,7 @@
 <section id="experience">
   <div class="wrap">
     <div class="section-intro fade-in">
-      <p class="section-label">03 — History</p>
+      <p class="section-label">04 — History</p>
       <h2>Experience</h2>
     </div>
 
@@ -703,7 +781,7 @@
       <div>
         <p class="exp-title">MSc Interactive Media Technology</p>
         <p class="exp-org">KTH Royal Institute of Technology · Stockholm, SE</p>
-        <p class="exp-desc">Sound in Interaction · Musical Communication & Music Technology · Human Perception for Information Technology · Programming for Data Science · Computer Graphics & Interaction</p>
+        <p class="exp-desc">User Experience Design and Evaluation · Research Methods in Interactive Media Technology · Human Perception for Information Technology · Media Technology and Interaction Design · Sound in Interaction · Musical Communication &amp; Music Technology</p>
       </div>
     </div>
 
@@ -712,7 +790,16 @@
       <div>
         <p class="exp-title">Senior Research Executive</p>
         <p class="exp-org">Ipsos LTD. · Beijing, CN</p>
-        <p class="exp-desc">Designed and executed 50+ research projects. Applied statistical analysis and interview protocols across client deliverables spanning consumer insights, UX evaluation, and strategic advisory.</p>
+        <p class="exp-desc">Led 60+ qualitative and quantitative research projects end to end, from study design to stakeholder reporting, spanning consumer insights, UX evaluation and strategic advisory. Ran interviews, focus groups, contextual inquiry and surveys across international markets, applying statistical analysis to large respondent samples.</p>
+      </div>
+    </div>
+
+    <div class="experience-item fade-in">
+      <div class="exp-date">Sep 2019 — Jun 2022</div>
+      <div>
+        <p class="exp-title">Research Assistant</p>
+        <p class="exp-org">Aging Lab (PI: Dahua Wang) · Beijing Normal University</p>
+        <p class="exp-desc">Supported a lab focused on cognitive ageing and emotional well-being in older adults. Recruited participants, ran experimental sessions and analysed behavioural data.</p>
       </div>
     </div>
 
@@ -721,7 +808,7 @@
       <div>
         <p class="exp-title">BSc Psychology</p>
         <p class="exp-org">Beijing Normal University · Beijing, CN</p>
-        <p class="exp-desc">Cognitive Psychology · Engineering Psychology · Experimental Psychology · Multi-Factor Experimental Design</p>
+        <p class="exp-desc">Cognitive Psychology · Experimental Psychology · Engineering Psychology · Multi-Factor Experimental Design · Psychological Measurement · User Experience</p>
       </div>
     </div>
   </div>
@@ -732,7 +819,7 @@
   <div class="wrap">
     <div class="contact-body">
       <div class="fade-in">
-        <p class="section-label" style="margin-bottom:1rem;">04 — Contact</p>
+        <p class="section-label" style="margin-bottom:1rem;">05 — Contact</p>
         <h2 class="contact-heading">Let's work<br><em>together.</em></h2>
       </div>
       <div class="contact-links fade-in">
